@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hx.eplate.trafficdata.query.dao.read.VehicleRfidReadDao">
+
+	<select id="find"  parameterType="map" resultType="map">
+		SELECT * FROM vehicle_rfid
+		WHERE 1=1
+		<if test="data != null">
+			<if test="data.id !=null"> AND id = #{data.id} </if>
+		</if>
+	</select>
+
+	<select id="findEntity" parameterType="map" resultType="map">
+		SELECT * FROM vehicle_rfid
+	</select>
+	<!-- 分页查询数据 -->
+	<select id="findLimit" resultType="map" parameterType="map">
+		SELECT * FROM (SELECT *,(SELECT `name` FROM rfid WHERE id = vehicle_rfid.rfid_id) AS 'rfid_name',
+		(SELECT `model_de` FROM vehicle WHERE id = vehicle_rfid.vehicle_id) AS 'model_de'
+		FROM vehicle_rfid ) a
+		WHERE isdelete = 1
+		<if test="data !=null">
+			<if test="data.vehicle_platenumber != null and data.vehicle_platenumber != ''"> AND vehicle_platenumber = #{data.vehicle_platenumber}</if>
+			<if test="data.rfid_name != null and data.rfid_name != ''"> AND rfid_name = #{data.rfid_name}</if>
+			<if test="data.way != null and data.way != ''"> AND way = #{data.way}</if>
+			<if test="data.startime != null and data.endtime != null"> 	<![CDATA[AND startime >= #{data.startime}  AND startime <= #{data.endtime} ]]></if>
+		</if>
+		<if test="extlimit !=null">
+			ORDER BY
+			<choose>
+				<when test="extlimit.sort != null">
+					${extlimit.sort} ${extlimit.dir}
+				</when>
+				<otherwise>
+					id DESC
+				</otherwise>
+			</choose>
+			LIMIT ${(extlimit.pageindex-1)*extlimit.pagesize},${extlimit.pagesize}
+		</if>
+
+	</select>
+
+	<select id="findCount" resultType="int" parameterType="map">
+		SELECT COUNT(1) AS totalCount  FROM (SELECT *,(SELECT `name` FROM rfid WHERE id = vehicle_rfid.rfid_id) AS 'rfid_name',
+		(SELECT `model_de` FROM vehicle WHERE id = vehicle_rfid.vehicle_id) AS 'model_de'
+		FROM vehicle_rfid ) a
+		WHERE isdelete = 1
+		<if test="data !=null">
+			<if test="data.vehicle_platenumber != null and data.vehicle_platenumber != ''"> AND vehicle_platenumber = #{data.vehicle_platenumber}</if>
+			<if test="data.rfid_name !=null and data.rfid_name != ''"> AND rfid_name = #{data.rfid_name}</if>
+			<if test="data.way != null and data.way != ''"> AND way = #{data.way}</if>
+			<if test="data.startime != null and data.endtime != null"> 	<![CDATA[AND startime >= #{data.startime}  AND startime <= #{data.endtime} ]]></if>
+		</if>
+	</select>
+
+	<select id="planeFlowList" resultType="map" parameterType="map">
+		SELECT * FROM (SELECT *,(SELECT `name` FROM rfid WHERE id = a.rfid_id) AS 'rfid_name'
+		FROM(
+			<choose>
+				<when test="data.ckdata == 'day'">
+					SELECT rfid_id,COUNT(rfid_id) AS rfid_count FROM vehicle_rfid WHERE
+					to_days(startime) = to_days(#{data.startime})
+				</when>
+				<when test="data.ckdata == 'week'">
+					SELECT rfid_id,COUNT(rfid_id) AS rfid_count FROM vehicle_rfid WHERE
+					<![CDATA[
+						startime >= subdate(#{data.startime},date_format(#{data.startime},'%w')-1) AND
+						startime <= subdate(#{data.startime},date_format(#{data.startime},'%w')-7)
+					]]>
+				</when>
+				<when test="data.ckdata == 'month'">
+					SELECT rfid_id,COUNT(rfid_id) AS rfid_count FROM vehicle_rfid WHERE
+					(DATE_FORMAT(startime, '%Y%m' ) = DATE_FORMAT(#{data.startime},'%Y%m') OR DATE_FORMAT(startime, '%Y-%m' ) = #{data.startime})
+				</when>
+				<otherwise>
+					SELECT rfid_id,COUNT(rfid_id) AS rfid_count FROM vehicle_rfid WHERE 1=1
+				</otherwise>
+			</choose>
+		AND isdelete =1 GROUP BY rfid_id ) a)b
+		WHERE 1=1
+		<if test="data != null">
+			<if test="data.rfid_name != null and data.rfid_name != ''"> AND rfid_name = #{data.rfid_name}</if>
+		</if>
+	</select>
+
+</mapper>

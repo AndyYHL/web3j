@@ -1,0 +1,38 @@
+?eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.31.10:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    #instance-id: 192.168.31.13:spring-cloud-producer:9000
+    ip-address: ${spring.cloud.client.ipAddress}
+    instance-id:  ${spring.cloud.client.ipAddress}:${server.port}
+    hostname: ${spring.cloud.client.ipAddress}
+
+server:
+  port: 8001
+spring:
+  application:
+    name: spring-cloud-producer
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.31.41:3306/trafficdata?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useUnicode=true&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: root
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/love89caozq/cloudtest
+          search-paths: config-repo
+          username: caozhiqiang@hashsico.com
+          password: Admin12345
+    inetutils:
+      preferred-networks:
+  thymeleaf:
+    prefix: classpath:/templates/
+
+mybatis:
+  config-locations: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/*/*.xml
+

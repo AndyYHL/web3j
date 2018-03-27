@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+主键:<input id="keyid"/>
+
+<button onclick="save()">添加/编辑</button>
+
+
+<button onclick="info()">详细</button>
+
+<button onclick="list()">列表</button>
+
+<button onclick="del()">删除</button>
+
+</body>
+</html>
+
+<script>
+
+    function postData(url,json,func) {
+        $.ajax({
+            type: "post",
+            dataType: 'json',
+            url: url,
+            contentType: 'application/json',
+            data: json,
+            success: function (data) {
+                func(data)
+            }
+        });
+    }
+
+    function save() {
+        var keyid = $("#keyid").val()
+        if (keyid.length==0){
+            keyid=0;
+        }
+
+        postData("/datacalculation/data_rule/save",'{"data":{"id":'+keyid+',"name":"2","process":"1","resultable":"1","describe1":"1","type":"1","createtime":1520478913000,"modifytime":1520478913000,"reservdefield1":"","reservdefield2":1,"isdelete":1}}' +
+            '}',function (data) {
+            alert(data)
+        })
+    }
+
+    function info() {
+        var keyid = $("#keyid").val()
+        if (keyid.length==0){
+            keyid=0;
+        }
+        postData("/datacalculation/data_rule/find",'{"data":{"id":'+keyid+'}}' +
+            '}',function (data) {
+            alert(data)
+        })
+    }
+    
+    function list() {
+        var keyid = $("#keyid").val()
+        if (keyid.length==0){
+            keyid=0;
+        }
+        postData("/datacalculation/data_rule/findLimit",'{"data":{"name":"'+keyid+'"}}' +
+            '}',function (data) {
+            alert(data)
+        })
+    }
+    function del() {
+        var keyid = $("#keyid").val()
+        if (keyid.length==0){
+            keyid=0;
+        }
+        postData("/datacalculation/data_rule/del",'{"data":{"id":'+keyid+'}}' +
+            '}',function (data) {
+            alert(data)
+        })
+    }
+</script>
