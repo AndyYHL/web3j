@@ -39,6 +39,7 @@ public class QueryServiceApplication {
 		FastJsonHttpMessageConverter fasConverter  = new  FastJsonHttpMessageConverter();
 		//2、添加fastJson的配置信息，比如：是否要格式化返回json数据
 		FastJsonConfig fastJsonConfig = new FastJsonConfig();
+		fastJsonConfig.setDateFormat("yyyy-MM-dd HH:mm:ss");    // 自定义时间格式
 		fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat,
 				SerializerFeature.WriteMapNullValue,
 				SerializerFeature.WriteNullStringAsEmpty,
