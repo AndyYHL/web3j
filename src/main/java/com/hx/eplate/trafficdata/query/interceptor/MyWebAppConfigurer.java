@@ -25,7 +25,7 @@ public class MyWebAppConfigurer implements WebMvcConfigurer {
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("forward:/login.html");
+        registry.addViewController("/").setViewName("forward:/login");
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 

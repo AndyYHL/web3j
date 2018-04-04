@@ -7,6 +7,8 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -16,7 +18,7 @@ import java.util.List;
 
 @SpringBootApplication
 @MapperScan("com.hx.eplate.trafficdata.query.dao")
-public class QueryServiceApplication {
+public class QueryServiceApplication extends SpringBootServletInitializer {
 
 	/**
 	 * 添加第三方json工具
@@ -52,10 +54,21 @@ public class QueryServiceApplication {
 		//4.在convert中添加配置信息.
 		fasConverter.setSupportedMediaTypes(fastMediaTypes);
 		fasConverter.setFastJsonConfig(fastJsonConfig);
+		fasConverter.setFastJsonConfig(fastJsonConfig);
 
 		HttpMessageConverter<?> converter = fasConverter;
 
 		return new HttpMessageConverters(converter);
+	}
+
+	/**
+	 * 添加 tomcat 网页支持
+	 * @param application
+	 * @return
+	 */
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(QueryServiceApplication.class);
 	}
 
 	public static void main(String[] args) {
