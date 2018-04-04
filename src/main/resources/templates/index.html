@@ -7,35 +7,96 @@
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
     <!--<script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>-->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-    <body class="container" style="left: 50%;top: 50%">
-
-        <span th:text="${key}"></span>
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>球队</th>
-                    <th>票</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>巴西VS中国</td>
-                    <td id="candidate-1"></td>
-                </tr>
-                <tr>
-                    <td>巴西VS意大利</td>
-                    <td id="candidate-2"></td>
-                </tr>
-                <tr>
-                    <td>巴西VS皇马</td>
-                    <td id="candidate-3"></td>
-                </tr>
-                </tbody>
-            </table>
+    <body class="container" style="color: white;background: url('../static/img/1.jpg')">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">项目</a>
+            </div>
+            <div style="float:right ">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">你好！欢迎admin</a></li>
+                    <li><a href="#" id="out">退出</a></li>
+                </ul>
+            </div>
         </div>
-        <input type="text" id="candidate" />
-        <a href="#" onclick="voteForCandidate()" class="btn btn-primary">Vote</a>
+    </nav>
+    <span th:text="${key}"></span>
+    <div class="table-responsive" id="div1" style="margin-top: 10%">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>球队</th>
+                <th>票</th>
+                <th>下注</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>巴西VS中国</td>
+                <td id="candidate-1">5000VS200</td>
+                <td>
+                    <button type="button" class="btn btn-success" title="Popover title" id="butxia">下注</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="table-responsive" style="display: none" id="div2">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>球队</th>
+                <th>票</th>
+                <th>下注</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>巴西</td>
+                <td>
+                    <div class="input-group" style="width: 100%;height: 100%">
+                        <input class="form-control required" type="number" value="100" name="password"/>
+                    </div>
+                </td>
+
+                <td>
+                    <button type="button" class="btn btn-success" title="Popover title">支持巴西</button>
+                </td>
+            </tr>
+            <tr>
+                <td>中国</td>
+                <td>
+                    <div class="input-group" style="width: 100%;height: 100%">
+                        <input class="form-control required" type="number" value="100" name="password"/>
+                    </div>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success" title="Popover title">支持中国</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <button type="button" class="btn btn-success" title="Popover title" id="result_list">查看结果</button>
+    <button type="button" class="btn btn-success" title="Popover title" id="result_history_list">查看历史比赛结果</button>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#butxia").click(function () {
+                $("#div2").toggle();
+            });
+            $("#result_list").click(function () {
+                window.location.href = "result";
+            });
+            $("#result_history_list").click(function () {
+                window.location.href = "result_history";
+            });
+            $("#out").click(function () {
+                window.location.href = "login";
+            });
+        });
+    </script>
     </body>
 </html>

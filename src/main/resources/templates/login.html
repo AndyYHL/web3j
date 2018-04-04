@@ -34,7 +34,7 @@
         .checkbox{padding-left:21px;}
     </style>
 </head>
-    <body>
+    <body style="color: white;">
         <div class="container">
             <div class="form row">
                 <div class="form-horizontal col-md-offset-3" id="login_form">
@@ -70,12 +70,10 @@
             }else if ($("#password").val() == ""){
                 alert("密码不能为空");
             }else{
-                alert("登录");
                 window.location.href = "index";
             }
         });
         $("#register").click(function(){
-            alert("注册");
             window.location.href = "register";
         });
     });

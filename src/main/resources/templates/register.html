@@ -3,33 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <!--<script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
 </head>
-<body>
+<body style="background: url('../static/img/1.jpg')" style="color: white;">
     <div class="container">
         <div class="form row">
             <div class="form-horizontal col-md-offset-3" id="login_form">
-                <h3 class="form-title">项目管理平台-注册</h3>
+                <h3 class="form-title" style="color: white">项目管理平台-注册</h3>
                 <div class="col-md-9">
                     <div class="form-group">
                         <i class="fa fa-user fa-lg"></i>
-                        <input class="form-control required" type="text" placeholder="Username" id="username" name="username" autofocus="autofocus" maxlength="20"/>
+                        <input class="form-control required" type="text" placeholder="用户名" id="username" name="username" autofocus="autofocus" maxlength="20"/>
                     </div>
                     <div class="form-group">
                         <i class="fa fa-lock fa-lg"></i>
-                        <input class="form-control required" type="password" placeholder="Password" id="password" name="password" maxlength="8"/>
+                        <input class="form-control required" type="password" placeholder="密码" id="password" name="password" maxlength="8"/>
                     </div>
                     <div class="form-group">
-                        <label class="checkbox">
-                            <input type="checkbox" name="remember" value="1"/>记住我
-                        </label>
+                        <i class="fa fa-lock fa-lg"></i>
+                        <input class="form-control required" type="password" placeholder="确认密码" id="affirm_password" name="password" maxlength="8"/>
+                    </div>
+                    <div class="form-group">
+                        <i class="fa fa-lock fa-lg"></i>
+                        <input class="form-control required" type="password" placeholder="钱包地址" id="money_address" name="password" maxlength="8"/>
+                    </div>
+                    <div class="form-group">
+                        <i class="fa fa-lock fa-lg"></i>
+                        <input class="form-control required" type="password" placeholder="公钥" id="publickey" name="password" maxlength="8"/>
+                    </div>
+                    <div class="form-group">
+                        <i class="fa fa-lock fa-lg"></i>
+                        <input class="form-control required" type="password" placeholder="私钥" id="privatekey" name="password" maxlength="8"/>
+                    </div>
+
+                    <div class="form-group">
+                        <i class="fa fa-lock fa-lg"></i>
+                        <input class="form-control required" type="password" placeholder="用户凭证" id="user_voucher" name="password" maxlength="8"/>
                     </div>
                     <div class="form-group col-md-offset-9">
-                        <button type="submit" class="btn btn-success pull-left" id="login" name="submit">确定</button>
-                        <button type="submit" class="btn btn-info pull-right" id="register" name="submit">重写</button>
+                        <button type="submit" class="btn btn-success pull-left" id="login" name="submit">登录</button>
+                        <button type="submit" class="btn btn-info pull-right" id="register" name="submit">注册</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#login").click(function(){
+            window.location.href = "login";
+        });
+        $("#register").click(function(){
+            alert("注册");
+        });
+    });
+</script>
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <!--<script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+    <body class="container" style="color: white;background: url('../static/img/1.jpg')">
+        <span th:text="${key}"></span>
+        <div class="table-responsive" id="div1" style="margin-top: 10%">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>球队</th>
+                    <th>票</th>
+                    <th>胜者</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>巴西VS中国</td>
+                    <td>5000VS200</td>
+                    <td>
+                        <button type="button" class="btn btn-warning" >巴西</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>巴西VS意大利</td>
+                    <td>5000VS200</td>
+                    <td>
+                        <button type="button" class="btn btn-warning" >巴西</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="btn btn-success" title="Popover title" id="fan_index">返回-继续投票</button>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#fan_index").click(function () {
+                    window.location.href = "index";
+                });
+            });
+        </script>
+    </body>
+</html>

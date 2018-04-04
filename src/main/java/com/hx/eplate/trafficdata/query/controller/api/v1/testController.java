@@ -30,4 +30,18 @@ public class testController {
         request.setAttribute("key", "hello world");
         return "/register";
     }
+
+    @GetMapping("/result")
+    public String result(HttpServletRequest request) {
+        //逻辑处理
+        request.setAttribute("key", "hello world");
+        return "/result";
+    }
+
+    @GetMapping("/result_history")
+    public String result_history(HttpServletRequest request) {
+        //逻辑处理
+        request.setAttribute("key", "hello world");
+        return "/result_history";
+    }
 }
