@@ -16,7 +16,7 @@ spring:
     name: spring-cloud-producer
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.31.41:3306/trafficdata?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useUnicode=true&zeroDateTimeBehavior=convertToNull&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/trafficdata?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useUnicode=true&zeroDateTimeBehavior=convertToNull&useSSL=false
     username: root
     password: root
   cloud:

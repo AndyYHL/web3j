@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <!--<script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <style type="text/css">
+        body{
+            background: url("../static/img/1.jpg");
+            animation-name:myfirst;
+            animation-duration:12s;
+            /*变换时间*/
+            animation-delay:2s;
+            /*动画开始时间*/
+            animation-iteration-count:infinite;
+            /*下一周期循环播放*/
+            animation-play-state:running;
+            /*动画开始运行*/
+        }
+        @keyframes myfirst
+        {
+            0%   {background:url("../static/img/1.jpg");}
+            34%  {background:url("../static/img/2.jpg");}
+            67%  {background:url("../static/img/3.jpg");}
+            100% {background:url("../static/img/1.jpg");}
+        }
+        .form{background: rgba(255,255,255,0.2);width:400px;margin:120px auto;}
+        /*阴影*/
+        .fa{display: inline-block;top: 27px;left: 6px;position: relative;color: #ccc;}
+        input[type="text"],input[type="password"]{padding-left:26px;}
+        .checkbox{padding-left:21px;}
+    </style>
+</head>
+    <body>
+        <div class="container">
+            <div class="form row">
+                <div class="form-horizontal col-md-offset-3" id="login_form">
+                    <h3 class="form-title">项目管理平台-登录</h3>
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <i class="fa fa-user fa-lg"></i>
+                            <input class="form-control required" type="text" placeholder="Username" id="username" name="username" autofocus="autofocus" maxlength="20"/>
+                        </div>
+                        <div class="form-group">
+                            <i class="fa fa-lock fa-lg"></i>
+                            <input class="form-control required" type="password" placeholder="Password" id="password" name="password" maxlength="8"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox">
+                                <input type="checkbox" name="remember" value="1"/>记住我
+                            </label>
+                        </div>
+                        <div class="form-group col-md-offset-9">
+                            <button type="submit" class="btn btn-success pull-left" id="login" name="submit">登录</button>
+                            <button type="submit" class="btn btn-info pull-right" id="register" name="submit">注册</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#login").click(function(){
+            if($("#username").val() == ""){
+                alert("用户名不能为空");
+            }else if ($("#password").val() == ""){
+                alert("密码不能为空");
+            }else{
+                alert("登录");
+                window.location.href = "index";
+            }
+        });
+        $("#register").click(function(){
+            alert("注册");
+            window.location.href = "register";
+        });
+    });
+</script>
+</html>

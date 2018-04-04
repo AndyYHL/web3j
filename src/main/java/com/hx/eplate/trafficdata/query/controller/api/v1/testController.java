@@ -11,9 +11,23 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class testController {
     @GetMapping("/index")
-    public String test(HttpServletRequest request) {
+    public String index(HttpServletRequest request) {
         //逻辑处理
         request.setAttribute("key", "hello world");
         return "/index";
+    }
+
+    @GetMapping("/login")
+    public String login(HttpServletRequest request) {
+        //逻辑处理
+        request.setAttribute("key", "hello world");
+        return "/login";
+    }
+
+    @GetMapping("/register")
+    public String register(HttpServletRequest request) {
+        //逻辑处理
+        request.setAttribute("key", "hello world");
+        return "/register";
     }
 }
