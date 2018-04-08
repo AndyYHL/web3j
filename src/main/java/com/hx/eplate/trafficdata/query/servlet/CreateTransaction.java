@@ -78,9 +78,11 @@ public class CreateTransaction extends HttpServlet {
 				jsonUtil.getInfo().setMessage("操作资金精度太小，不能转账。。");
 				return jsonUtil;
 			}
-			
-        Transaction transaction = Transaction.createEtherTransaction(accountId,null,null,null,toAccountId,amount);
-        logger.info("创建事物成功，账户:[{}]转账到账户:[{}],资金amount:[{}]]",accountId,toAccountId,amStr);
+			////交易手续费由price*limit来决定，所有这两个值你可以自定义，也可以使用系统参数获取当前两个值
+			BigInteger price =new BigInteger("1");
+			BigInteger limit =new BigInteger("1");
+			Transaction transaction = Transaction.createEtherTransaction(accountId,null,price,limit,toAccountId,amount);
+			logger.info("创建事物成功，账户:[{}]转账到账户:[{}],资金amount:[{}]]",accountId,toAccountId,amStr);
 			try{
             EthSendTransaction ethSendTransaction =parity.personalSendTransaction(transaction,passsword).send();
 				if(ethSendTransaction!=null){
