@@ -16,7 +16,7 @@ import java.util.Map;
 @Service("vehicleRfidService")
 public class VehicleRfidServiceImpl implements VehicleRfidService {
 
-    @SuppressWarnings("SpringJavaAutowiringInspection")
+    @SuppressWarnings({"SpringJavaAutowiringInspection", "SpringJavaInjectionPointsAutowiringInspection"})
     @Autowired
     VehicleRfidReadDao vehicleRfidReadDao;
 

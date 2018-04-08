@@ -26,7 +26,7 @@ public class Test {
     public static void main(String[] args) throws Exception {
         //测试 链接钱包地址
         String money = "https://kovan.infura.io/yXDUNwlNOcx0UJCWjzNr";
-        Web3j web3j = Web3JClient.getClient(money);
+        Web3j web3j = Web3JClient.getClient();
         //非常简单，测试节点是否链接成功
         Web3ClientVersion web3ClientVersion;
         try {
@@ -40,17 +40,17 @@ public class Test {
         //创建用户凭证
         String filePath = "E:/pictures";
         String fileName;
-        ALICE alice = new ALICE();
-        alice.setAddress("");
+        //ALICE alice = new ALICE();
+        //alice.setAddress("");
         EcKeyPair ecKeyPair = new EcKeyPair();
-        alice.setEcKeyPair(ecKeyPair);
+        //alice.setEcKeyPair(ecKeyPair);
         // 创建钱包地址
         //eth-密码需要自己管理，自己设置哦！
         fileName = WalletUtils.generateNewWalletFile("设置你的密码", new File(filePath), false);
         System.out.println(fileName);//保存你的加密文件信息
-        System.out.println(alice.getAddress());//钱包地址
-        System.out.println(alice.getEcKeyPair().getPrivateKey());//私钥
-        System.out.println(alice.getEcKeyPair().getPublicKey());//公钥
+        //System.out.println(alice.getAddress());//钱包地址
+        //System.out.println(alice.getEcKeyPair().getPrivateKey());//私钥
+        //System.out.println(alice.getEcKeyPair().getPublicKey());//公钥
 
         //加载钱包
         String path = "钱包加密文件地址";

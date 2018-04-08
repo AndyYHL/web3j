@@ -33,6 +33,8 @@ public class FinalJson {
     public enum HttpMediaType{
         text,json
     }
+    //区跨链地址
+    public static final String walletServerUrl = "";
 
     /**
      * 页面条数
