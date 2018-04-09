@@ -53,7 +53,12 @@ spring:
       preferred-networks:
   thymeleaf:
     prefix: classpath:/templates/
-
+ #网页编码设置
+  http:
+    encoding:
+      force: true
+      charset: utf-8
+      enabled: true
 mybatis:
   config-locations: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/*/*.xml
