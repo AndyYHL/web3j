@@ -1,4 +1,4 @@
-﻿package com.hx.eplate.trafficdata.query.servlet;
+package com.hx.eplate.trafficdata.query.servlet;
 
 
 import javax.servlet.ServletException;

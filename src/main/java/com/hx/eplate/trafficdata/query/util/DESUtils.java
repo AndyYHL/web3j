@@ -1,4 +1,3 @@
-﻿
 package com.hx.eplate.trafficdata.query.util;
 
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;

@@ -1,4 +1,4 @@
-﻿package com.hx.eplate.trafficdata.query.util;
+package com.hx.eplate.trafficdata.query.util;
 
 import java.util.HashMap;
 import java.util.Map;
