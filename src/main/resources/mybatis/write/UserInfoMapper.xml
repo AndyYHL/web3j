@@ -45,6 +45,26 @@
 		</trim>
 	</insert>
 
+	<!-- 批量插入区块信息 -->
+	<insert id="insertTranscationList" parameterType="java.util.List">
+		insert into block_info(
+		difficulty,extraData,gasLimit,
+		gasUsed,hash,logsBloom,
+		miner,nonce,block_info.number,
+		parentHash,sha3Uncles,block_info.size,
+		stateRoot,block_info.timestamp,totalDifficulty,
+		transactions,transactionsRoot,uncles
+		) VALUES
+		<foreach collection="blockinfoBeanlist" item="trsList" index="index" open="(" close=")" separator=",">
+			#{trsList.difficulty},#{trsList.extraData},#{trsList.gasLimit},
+			#{trsList.gasUsed},#{trsList.hash},#{trsList.logsBloom},
+			#{trsList.miner},#{trsList.nonce},#{trsList.number},
+			#{trsList.parentHash},#{trsList.sha3Uncles},#{trsList.size},
+			#{trsList.stateRoot},#{trsList.timestamp},#{trsList.totalDifficulty},
+			#{trsList.transactions},#{trsList.transactionsRoot},#{trsList.uncles}
+		</foreach>
+	</insert>
+
 	<update id="upt" parameterType="map">
 		UPDATE user_info
 		<set>
