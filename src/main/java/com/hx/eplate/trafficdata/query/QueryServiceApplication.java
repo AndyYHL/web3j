@@ -12,11 +12,17 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
+@EnableScheduling//启动定时探测
+@EnableAsync//启动自定义线程池
+@EnableTransactionManagement//启动事物管理
 @MapperScan("com.hx.eplate.trafficdata.query.dao")
 public class QueryServiceApplication extends SpringBootServletInitializer {
 
