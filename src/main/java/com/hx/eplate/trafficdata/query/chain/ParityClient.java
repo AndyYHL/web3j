@@ -6,10 +6,7 @@ import org.web3j.protocol.parity.Parity;
 
 /**
  * 钱包通过parity链接
- * 
- * @author 贺云<br>
- * Version: 1.0<br>
- * Date: 2017年8月16日
+ *
  */
 public class ParityClient {
 

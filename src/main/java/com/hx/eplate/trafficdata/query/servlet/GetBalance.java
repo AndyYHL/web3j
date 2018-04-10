@@ -21,8 +21,6 @@ import java.util.Map;
 
 /**
  * 查询账户余额
- * Version: 1.0<br>
- * Date: 2017年8月16日
  */
 public class GetBalance extends HttpServlet {
 	

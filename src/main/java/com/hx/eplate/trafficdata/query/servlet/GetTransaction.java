@@ -39,8 +39,6 @@ public class GetTransaction extends HttpServlet {
 
 	/**
 	 * 查询交易记录
-	 * Version: 1.0<br>
-	 * Date: 2017年8月16日
 	 */
 	protected JsonUtil doPost(JsonUtil jsonUtil) throws ServletException, IOException {
 		Map map = (Map)jsonUtil.getData();

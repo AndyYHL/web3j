@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServlet;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * 创建账户
+ */
 public class CreateAccount extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -29,6 +32,13 @@ public class CreateAccount extends HttpServlet {
 
 	}
 
+	/**
+	 * 创建账户
+	 * @param jsonUtil
+	 * @return  输入用户名和密码
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected JsonUtil doPost(JsonUtil jsonUtil) throws ServletException, IOException {
 		Map map = (Map) jsonUtil.getData();
 		String password = map.get("password").toString();

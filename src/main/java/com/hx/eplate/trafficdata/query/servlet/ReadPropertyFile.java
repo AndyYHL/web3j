@@ -9,8 +9,6 @@ import java.io.IOException;
 
 /**
  * 启动线程类
- * Version: 1.0<br>
- * Date: 2017年8月20日
  */
 public class ReadPropertyFile extends HttpServlet {
 	

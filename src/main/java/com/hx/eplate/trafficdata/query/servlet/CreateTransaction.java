@@ -21,8 +21,6 @@ import java.util.Map;
 
 /**
  * 创建交易事物
- * Version: 1.0<br>
- * Date: 2017年8月16日
  */
 public class CreateTransaction extends HttpServlet {
 
