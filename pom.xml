@@ -117,6 +117,13 @@
 			<artifactId>HikariCP</artifactId>
 			<!-- 版本号可以不用指定，Spring Boot会选用合适的版本 -->
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+
 		<!-- Mybatis依赖 -->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
