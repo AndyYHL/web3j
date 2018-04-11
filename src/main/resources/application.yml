@@ -14,6 +14,11 @@ server:
 spring:
   application:
     name: spring-cloud-producer
+  #加入JSP支持
+  mvc:
+    view:
+      suffix: .jsp
+      prefix: /view
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/trafficdata?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useUnicode=true&zeroDateTimeBehavior=convertToNull&useSSL=false
@@ -49,6 +54,7 @@ spring:
           search-paths: config-repo
           username: caozhiqiang@hashsico.com
           password: Admin12345
+    #多网卡配置
     inetutils:
       preferred-networks:
   thymeleaf:

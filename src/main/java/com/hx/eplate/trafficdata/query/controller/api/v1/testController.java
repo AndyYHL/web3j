@@ -2,6 +2,8 @@ package com.hx.eplate.trafficdata.query.controller.api.v1;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.method.support.ModelAndViewContainer;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -43,5 +45,13 @@ public class testController {
         //逻辑处理
         request.setAttribute("key", "hello world");
         return "/result_history";
+    }
+
+    @GetMapping("/jsp_view")
+    public ModelAndView jsp_view(HttpServletRequest request) {
+        //逻辑处理
+        ModelAndView modelAndView = new ModelAndView("Index");
+        modelAndView.addObject("key", "hello world");
+        return modelAndView;
     }
 }
