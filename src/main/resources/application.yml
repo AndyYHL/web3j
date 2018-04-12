@@ -1,19 +1,22 @@
+server:
+  port: 8001   #配置端口
 ?eureka:
   client:
+    register-with-eureka: false   #是否向服务端注册自己，它本身就是Eureka Server，所以为false
+    fetch-registry: false         #表示是否从Eureka Server获取信息，因为这是一个单节点，不需要同步其它Eureka Server的数据，所以为 false
     serviceUrl:
-      defaultZone: http://192.168.31.10:8761/eureka/
+      #defaultZone: http://192.168.31.10:8761/eureka/ #设置 Eureka Client 与 Eureka Server 同步的地址，注册、查询服务都要使用该地址，多个地址可用逗号分隔
   instance:
-    prefer-ip-address: true
+    prefer-ip-address: true   #是否需要像服务器发送IP地址
     #instance-id: 192.168.31.13:spring-cloud-producer:9000
     ip-address: ${spring.cloud.client.ipAddress}
     instance-id:  ${spring.cloud.client.ipAddress}:${server.port}
     hostname: ${spring.cloud.client.ipAddress}
-
-server:
-  port: 8001
 spring:
   application:
     name: spring-cloud-producer
+  sleuth:
+     enabled: false
   #加入JSP支持
   mvc:
     view:
@@ -68,4 +71,6 @@ spring:
 mybatis:
   config-locations: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/*/*.xml
-
+#日志配置
+logging:
+  config: classpath:log4j2.xml
