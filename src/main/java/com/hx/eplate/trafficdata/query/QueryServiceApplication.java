@@ -26,6 +26,10 @@ import java.util.List;
 @MapperScan("com.hx.eplate.trafficdata.query.dao")
 public class QueryServiceApplication extends SpringBootServletInitializer {
 
+	//  区跨链 在服务器上的创世ID 20180418
+	//第一个测试点 如果启用第二个测试节点，port以及rpcport应与第一个节点不同 --port 16333 系统默认是30303 -rpcport 8546 系统默认是8545
+	//参考网址：https://blog.csdn.net/w88193363/article/details/79402074
+	//https://www.cnblogs.com/liangyue/p/6824858.html
 	/**
 	 * 添加第三方json工具
 	 * 1、需要再pom.xml加入相关以来
