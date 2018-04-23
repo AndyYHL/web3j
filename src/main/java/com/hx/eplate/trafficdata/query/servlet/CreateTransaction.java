@@ -22,19 +22,10 @@ import java.util.Map;
 /**
  * 创建交易事物
  */
-public class CreateTransaction extends HttpServlet {
+public class CreateTransaction{
 
-	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(CreateTransaction.class);
 	private Parity parity = ParityClient.getParity();
-	public CreateTransaction() {
-		super();
-	}
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
-
 	/**
 	 * 事物交易请求
 	 * Version: 1.0<br>

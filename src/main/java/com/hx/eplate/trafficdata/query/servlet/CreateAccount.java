@@ -17,19 +17,12 @@ import java.util.Map;
 /**
  * 创建账户
  */
-public class CreateAccount extends HttpServlet {
-	
-	private static final long serialVersionUID = 1L;
+public class CreateAccount{
 	private static final Logger logger = LoggerFactory.getLogger(CreateAccount.class);
 	private Parity parity = ParityClient.getParity();
-       
-    public CreateAccount() {
-        super();
-    }
 
 	protected JsonUtil doGet(JsonUtil jsonUtil) throws ServletException, IOException {
 		return jsonUtil;
-
 	}
 
 	/**

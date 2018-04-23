@@ -24,19 +24,8 @@ import java.util.Map;
  * Date: 2017年8月16日
  */
 public class GetTransaction extends HttpServlet {
-	
-	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(GetTransaction.class);
 	private Parity parity = ParityClient.getParity();
-       
-    public GetTransaction() {
-        super();
-    }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	}
-
 	/**
 	 * 查询交易记录
 	 */

@@ -22,20 +22,10 @@ import java.util.Map;
 /**
  * 查询账户余额
  */
-public class GetBalance extends HttpServlet {
-	
-	private static final long serialVersionUID = 1L;
+public class GetBalance{
+
 	private static Web3j web3j = Web3JClient.getClient();
 	private static final Logger logger = LoggerFactory.getLogger(GetBalance.class);
-       
-    public GetBalance() {
-        super();
-    }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	}
-
 	/**
 	 * 查询账户余额
 	 * Version: 1.0<br>

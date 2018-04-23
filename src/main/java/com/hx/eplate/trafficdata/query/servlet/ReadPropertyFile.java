@@ -10,22 +10,7 @@ import java.io.IOException;
 /**
  * 启动线程类
  */
-public class ReadPropertyFile extends HttpServlet {
-	
-	private static final long serialVersionUID = 1L;
-       
-    public ReadPropertyFile() {
-        super();
-    }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	}
-
+public class ReadPropertyFile {
 	/**
 	 * 启动所有线程
 	 * Version: 1.0<br>
