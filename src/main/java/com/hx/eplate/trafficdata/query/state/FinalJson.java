@@ -34,7 +34,7 @@ public class FinalJson {
         text,json
     }
     //区跨链地址
-    public static final String walletServerUrl = "";
+    public static final String walletServerUrl = "http://39.104.55.109:8545/";
 
     /**
      * 页面条数
