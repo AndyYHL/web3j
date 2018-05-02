@@ -3,45 +3,53 @@
 <mapper namespace="com.hx.eplate.trafficdata.query.dao.write.UserInfoWriteDao">
 
 	<insert id="save" parameterType="map" keyProperty="id" keyColumn="id" useGeneratedKeys="true">
-		INSERT INTO user_info(
-		  `name`,
+		INSERT INTO userinfo(
+		  `username`,
 		  pwd,
 		  phone,
 		  realname,
-		  uuid,
-		  prison_id
+		  purseaddress,
+		  publickey,
+		  privatekey,
+		  voucher,
+		  uuid
 		)
 		VALUES
 		(
-			#{data.name},
+			#{data.username},
 			#{data.pwd},
 			#{data.phone},
 			#{data.realname},
-			#{data.uuid},
-			#{data.prison_id}
+			#{data.purseaddress},
+			#{data.publickey},
+			#{data.privatekey},
+			#{data.voucher},
+			#{data.uuid}
 		)
 	</insert>
 
-	<insert id="saveNotNull" parameterType="map" keyProperty="id" keyColumn="id" useGeneratedKeys="true">INSERT INTO user_info
+	<insert id="saveNotNull" parameterType="map" keyProperty="id" keyColumn="id" useGeneratedKeys="true">INSERT INTO userinfo
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="data.name != null">`name`,</if>
+			<if test="data.username != null">`username`,</if>
 			<if test="data.pwd != null">`pwd`,</if>
 			<if test="data.phone != null">`phone`,</if>
 			<if test="data.realname != null">`realname`,</if>
+			<if test="data.purseaddress != null">`purseaddress`,</if>
+			<if test="data.publickey != null">`publickey`,</if>
+			<if test="data.privatekey != null">`privatekey`,</if>
+			<if test="data.voucher != null">`voucher`,</if>
 			<if test="data.uuid != null">`uuid`,</if>
-			<if test="data.prison_id != null">`prison_id`,</if>
-			<if test="data.role_id != null">`role_id`,</if>
-			<if test="data.role_name != null">`role_name`,</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="data.name != null">#{data.name},</if>
+			<if test="data.username != null">#{data.username},</if>
 			<if test="data.pwd != null">#{data.pwd},</if>
 			<if test="data.phone != null">#{data.phone},</if>
 			<if test="data.realname != null">#{data.realname},</if>
+			<if test="data.purseaddress != null">#{data.purseaddress},</if>
+			<if test="data.publickey != null">#{data.publickey},</if>
+			<if test="data.privatekey != null">#{data.privatekey},</if>
+			<if test="data.voucher != null">#{data.voucher},</if>
 			<if test="data.uuid != null">#{data.uuid},</if>
-			<if test="data.prison_id != null">#{data.prison_id},</if>
-			<if test="data.role_id != null">#{data.role_id},</if>
-			<if test="data.role_name != null">#{data.role_name},</if>
 		</trim>
 	</insert>
 
@@ -66,21 +74,19 @@
 	</insert>
 
 	<update id="upt" parameterType="map">
-		UPDATE user_info
+		UPDATE userinfo
 		<set>
-			<if test="data.name != null">name = #{data.name},</if>
+			<if test="data.username != null">username = #{data.username},</if>
 			<if test="data.pwd != null">pwd = #{data.pwd},</if>
 			<if test="data.phone != null">phone = #{data.phone},</if>
 			<if test="data.realname != null">realname = #{data.realname},</if>
-			<if test="data.isdelete != null">isdelete = #{data.isdelete},</if>
-			<if test="data.status != null">status = #{data.status},</if>
-			<if test="data.statusval != null">statusval = #{data.statusval},</if>
-			<if test="data.role_id != null">role_id = #{data.role_id},</if>
-			<if test="data.role_name != null">role_name = #{data.role_name},</if>
-			<if test="data.prison_id != null">prison_id = #{data.prison_id},</if>
-			<if test="data.loginip != null">loginip = #{data.loginip},</if>
+			<if test="data.purseaddress != null">purseaddress = #{data.purseaddress},</if>
+			<if test="data.publickey != null">publickey = #{data.publickey},</if>
+			<if test="data.privatekey != null">privatekey = #{data.privatekey},</if>
+			<if test="data.voucher != null">voucher = #{data.voucher},</if>
+			<if test="data.uuid != null">uuid = #{data.uuid},</if>
 		</set> WHERE id = #{data.id}
 	</update>
 
-	<delete id="del" parameterType="int">DELETE FROM user_info WHERE id = #{data.id}</delete>
+	<delete id="del" parameterType="int">DELETE FROM userinfo WHERE id = #{data.id}</delete>
 </mapper>

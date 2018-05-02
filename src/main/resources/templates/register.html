@@ -31,7 +31,7 @@
                         <i class="fa fa-lock fa-lg"></i>
                         <input class="form-control required" type="password" placeholder="确认密码" id="affirm_password" name="password" maxlength="8"/>
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <i class="fa fa-lock fa-lg"></i>
                         <input class="form-control required" type="password" placeholder="钱包地址" id="money_address" name="password" maxlength="8"/>
                     </div>
@@ -43,10 +43,13 @@
                         <i class="fa fa-lock fa-lg"></i>
                         <input class="form-control required" type="password" placeholder="私钥" id="privatekey" name="password" maxlength="8"/>
                     </div>
-
                     <div class="form-group">
                         <i class="fa fa-lock fa-lg"></i>
                         <input class="form-control required" type="password" placeholder="用户凭证" id="user_voucher" name="password" maxlength="8"/>
+                    </div>-->
+                    <div class="form-group">
+                        <i class="fa fa-lock fa-lg"></i>
+                        <input class="form-control required" type="number" placeholder="手机号" id="phone" name="phone" maxlength="8"/>
                     </div>
                     <div class="form-group col-md-offset-9">
                         <button type="submit" class="btn btn-success pull-left" id="login" name="submit">登录</button>
@@ -63,7 +66,39 @@
             window.location.href = "login";
         });
         $("#register").click(function(){
-            alert("注册");
+            var username = $("#username").val();
+            var password = $("#password").val();
+            var affirm_password = $("#affirm_password").val();
+            var phone = $("#phone").val();
+            if(username == ""){
+                alert("用户名不能为空");
+                return;
+            }else if(password ==""){
+                alert("密码不能为空");
+                return
+            }else if(password != affirm_password){
+                alert("二次输入的密码不一致");
+                return
+            }else if(phone == ""){
+                alert("手机号不能为空")
+                return
+            }
+            var json = {"data":{"username":username, "pwd":password, "phone":phone},"info":{"timestamp":"1525225818420"}};
+
+            $.ajax({
+                type:"POST",
+                url:"/user/register",
+                contentType: "application/json", //必须这样写
+                dataType:"json",
+                data:JSON.stringify(json),//schoolList是你要提交是json字符串
+                success:function (data) {
+                    if(data.info.status == 200){
+                        alert(data.info.message);
+                    }else{
+                        alert(data.info.message);
+                    }
+                }
+            });
         });
     });
 </script>

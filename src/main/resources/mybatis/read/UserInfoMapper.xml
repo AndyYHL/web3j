@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hx.eplate.trafficdata.query.dao.read.UserInfoReadDao">
+
+	<select id="find"  parameterType="map" resultType="map">
+		SELECT * FROM userinfo
+		WHERE 1=1
+		<if test="data != null">
+			<if test="data.id !=null"> AND id = #{data.id} </if>
+			<if test="data.username !=null"> AND username = #{data.username} </if>
+		</if>
+	</select>
+
+	<select id="findEntity" parameterType="map" resultType="map">
+		SELECT * FROM userinfo
+	</select>
+	<!-- 分页查询数据 -->
+	<select id="findLimit" resultType="map" parameterType="map">
+		SELECT * FROM userinfo
+		WHERE 1=1
+		<if test="data !=null">
+			<if test="data.phone != null and data.phone != ''"> AND phone = #{data.phone}</if>
+			<if test="data.rfid_name != null and data.rfid_name != ''"> AND rfid_name = #{data.rfid_name}</if>
+		</if>
+		<if test="extlimit !=null">
+			ORDER BY
+			<choose>
+				<when test="extlimit.sort != null">
+					${extlimit.sort} ${extlimit.dir}
+				</when>
+				<otherwise>
+					id DESC
+				</otherwise>
+			</choose>
+			LIMIT ${(extlimit.pageindex-1)*extlimit.pagesize},${extlimit.pagesize}
+		</if>
+
+	</select>
+
+	<select id="findCount" resultType="int" parameterType="map">
+		SELECT * FROM userinfo
+		WHERE 1=1
+		<if test="data !=null">
+			<if test="data.phone != null and data.phone != ''"> AND phone = #{data.phone}</if>
+			<if test="data.rfid_name != null and data.rfid_name != ''"> AND rfid_name = #{data.rfid_name}</if>
+		</if>
+	</select>
+</mapper>

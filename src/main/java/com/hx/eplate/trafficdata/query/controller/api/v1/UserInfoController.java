@@ -4,37 +4,37 @@ package com.hx.eplate.trafficdata.query.controller.api.v1;
  * Created by wuhaochao on 2017/8/2.
  */
 
-import com.google.common.collect.Maps;
-import com.hx.eplate.trafficdata.query.chain.ParityClient;
-import com.hx.eplate.trafficdata.query.chain.Web3JClient;
+import com.alibaba.fastjson.JSON;
+import com.hx.eplate.trafficdata.query.service.UserInfoService;
+import com.hx.eplate.trafficdata.query.util.json.JsonUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.web3j.protocol.Web3j;
-import org.web3j.protocol.parity.Parity;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 账户信息
+ * 用户信息
  */
-@RequestMapping("/accounts")
 @RestController
-public class AccountsController {
-    //区跨链账户链接
-    private Parity parity = ParityClient.getParity();
-    private Web3j web3j = Web3JClient.getClient();
+@RequestMapping("/user")
+public class UserInfoController {
+    @Autowired
+    UserInfoService userInfoService;
     /**
-     * 获取账户资金
+     * 注册用户
      *
-     * @param address
+     * @param jsonUtil
      * @return
      * @throws Throwable
      */
-    @RequestMapping("/getbalance/{address}")
-    public Object getBalance(@PathVariable("address") String address) throws Throwable {
-        return parity.parityRemoveAddress(address);
+    @RequestMapping("/register")
+    public Object register(@RequestBody JsonUtil jsonUtil) throws Throwable {
+        Map<String,Object> mapUtil = JSON.parseObject(JSON.toJSONString(jsonUtil),Map.class);
+        Map map = (Map) jsonUtil.getData();
+        return userInfoService.register(mapUtil,jsonUtil);
     }
 
     /**
@@ -45,9 +45,7 @@ public class AccountsController {
      */
     @RequestMapping("/getAccounts")
     public Object getAccounts() throws Throwable {
-        Map map = Maps.newHashMap();
-        map.put("ethAccounts",web3j.ethAccounts());
-        return map;
+        return null;
     }
 
     /**
